@@ -22,6 +22,34 @@
             <label for="description" class="label">Product Description:</label>
             <textarea id="description" name="description" class="input" required></textarea>
 
+            <label for="category" class="label">Category:</label>
+            <select id="category" name="category" class="input" required>
+                <?php
+                // Connect to the database and fetch categories
+                $host = "localhost";
+                $username = "root";
+                $password = "";
+                $database = "web_sell_clother";
+
+                $conn = new mysqli($host, $username, $password, $database);
+
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+
+                $sql = "SELECT id, name FROM categories";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+                    }
+                }
+
+                $conn->close();
+                ?>
+            </select>
+
             <label for="image" class="label">Product Image:</label>
             <input type="file" id="image" name="image" accept="image/*" required>
 
@@ -48,9 +76,10 @@ if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $price = $_POST['price'];
     $description = $_POST['description'];
+    $category = $_POST['category'];
 
     // Image upload
-    $target_directory = "uploads/products/"; // The directory where uploaded images will be stored
+    $target_directory = "uploads/products/";
     $image = $target_directory . basename($_FILES["image"]["name"]);
     $imageFileType = strtolower(pathinfo($image, PATHINFO_EXTENSION));
 
@@ -66,11 +95,11 @@ if (isset($_POST['submit'])) {
         echo "Only JPG, JPEG, PNG, and GIF files are allowed.";
     } elseif (move_uploaded_file($_FILES["image"]["tmp_name"], $image)) {
         // Image upload successful, insert data into the database
-        $sql = "INSERT INTO products (name, price, description, image) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO products (name, price, description, image, category_id) VALUES (?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
 
         if ($stmt) {
-            $stmt->bind_param("sdss", $name, $price, $description, $image);
+            $stmt->bind_param("sdssi", $name, $price, $description, $image, $category);
             if ($stmt->execute()) {
                 echo "Product added successfully.";
             } else {

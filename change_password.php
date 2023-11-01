@@ -68,35 +68,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <div class="navbar">
-        <div class="user-menu">
-            <span id="username"><?php echo $_SESSION['username']; ?></span>
-            <div class="dropdown-content" id="userDropdown">
-                <a href="profile.php">Change Information</a>
-                <a href="change_password.php">Change Password</a>
-                <a href="logout.php">Logout</a>
-            </div>
-        </div>
+    <?php include 'navbar.php'; ?>
+    <?php include 'sidebar.php'; ?>
+    <div class="content">
+        <h1>Change Password</h1>
+
+        <?php
+        if (isset($success_message)) {
+            echo '<p style="color: green;">' . $success_message . '</p>';
+        } elseif (isset($error_message)) {
+            echo '<p style="color: red;">' . $error_message . '</p>';
+        }
+        ?>
+
+        <form method="post">
+            <label for="current_password">Current Password:</label>
+            <input type="password" id="current_password" name="current_password" required>
+            <label for="new_password">New Password:</label>
+            <input type="password" id="new_password" name="new_password" required>
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+            <input type="submit" name="change_password" value="Change Password">
+        </form>
     </div>
-    <h1>Change Password</h1>
-
-    <?php
-    if (isset($success_message)) {
-        echo '<p style="color: green;">' . $success_message . '</p>';
-    } elseif (isset($error_message)) {
-        echo '<p style="color: red;">' . $error_message . '</p>';
-    }
-    ?>
-
-    <form method="post">
-        <label for="current_password">Current Password:</label>
-        <input type="password" id="current_password" name="current_password" required>
-        <label for="new_password">New Password:</label>
-        <input type="password" id="new_password" name="new_password" required>
-        <label for="confirm_password">Confirm Password:</label>
-        <input type="password" id="confirm_password" name="confirm_password" required>
-        <input type="submit" name="change_password" value="Change Password">
-    </form>
 </body>
-
-</html>

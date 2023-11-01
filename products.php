@@ -30,6 +30,17 @@
         .modal-buttons {
             text-align: right;
         }
+
+        /* Search Bar Styles */
+        .search-container {
+            margin-top: 20px;
+            text-align: left;
+            width: 300px;
+        }
+
+        .search-input {
+            padding: 5px;
+        }
     </style>
 </head>
 
@@ -39,10 +50,12 @@
 
     <div class="content">
         <div class="header">
-            <h2 class="section-title">Product List</h2>
-
+            <h1>Product List</h1>
             <div class="btn-create">
                 <a href="create_product.php" class="btn-create">Create Product</a>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-input" onkeyup="searchProducts()" placeholder="Search for products...">
             </div>
         </div>
 
@@ -50,8 +63,9 @@
         <table class="data-table">
             <tr>
                 <th class="table-header">Image</th>
-                <th class="table-header">Product Name</th>
-                <th class="table-header">Product Price</th>
+                <th class="table-header">Name</th>
+                <th class="table-header">Category</th>
+                <th class="table-header">Price</th>
                 <th class="table-header">Description</th>
                 <th class="table-header">Action</th>
             </tr>
@@ -91,10 +105,32 @@
                     var modal = document.getElementById("deleteConfirmationModal");
                     modal.style.display = "none";
                 }
+
+                function searchProducts() {
+                    var input, filter, table, tr, td, i, txtValue;
+                    input = document.getElementById("searchInput");
+                    filter = input.value.toUpperCase();
+                    table = document.querySelector(".data-table");
+                    tr = table.getElementsByTagName("tr");
+
+                    for (i = 1; i < tr.length; i++) {
+                        td = tr[i].getElementsByTagName("td")[1]; // Column index for product name
+                        if (td) {
+                            txtValue = td.textContent || td.innerText;
+                            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                tr[i].style.display = "";
+                            } else {
+                                tr[i].style.display = "none";
+                            }
+                        }
+                    }
+                }
             </script>';
 
-            // Fetch products from the database
-            $sql = "SELECT * FROM products";
+            // Fetch products with category names from the database
+            $sql = "SELECT products.*, categories.name AS category_name
+            FROM products
+            INNER JOIN categories ON products.category_id = categories.id;";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
@@ -102,12 +138,13 @@
                     echo "<tr>";
                     echo "<td class='table-data'><img src='" . $row['image'] . "' alt='" . $row['name'] . "' class='product-image'></td>";
                     echo "<td class='table-data'>" . $row['name'] . "</td>";
-                    echo "<td class='table-data'>" . $row['price'] . " VND</td>";
-                    echo "<td class='table-data'>" . $row['description'] . "</td>";
+                    echo "<td class='table-data'>" . $row['category_name'] . "</td>";
+                    echo "<td class='table-data'>" . number_format($row['price'], 0, ',', '.') . ' đ' . "</td>";
+                    echo "<td class='table-data'>" . (strlen($row['description']) > 50 ? substr($row['description'], 0, 50) . '...' : $row['description']) . "</td>";
                     echo "<td class='table-data table-action'>
                             <a href='edit_product.php?product_id=" . $row['id'] . "' class='btn-edit edit'>Edit</a>
                             <a href='javascript:void(0);' onclick='showConfirmationModal(" . $row['id'] . ")' class='btn-delete delete'>Delete</a>
-                          </td>";
+                        </td>";
                     echo "</tr>";
                 }
             } else {
@@ -156,9 +193,8 @@ if (isset($_GET['delete_product_id'])) {
     if ($stmt) {
         $stmt->bind_param("i", $product_id);
         if ($stmt->execute()) {
-            header("Location: products.php");
-            echo "Product deleted successfully.";
-            exit;
+            echo '<script>window.location.href = "products.php";</script>';
+            exit; // Make sure to exit to prevent further script execution
         } else {
             echo "Error deleting product: " . $stmt->error;
         }

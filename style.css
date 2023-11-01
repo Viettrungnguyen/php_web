@@ -213,12 +213,6 @@ a:hover {
   font-size: 24px;
 }
 
-/* Section Title */
-.section-title {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
 /* Form Label and Input */
 .label {
   display: block;
@@ -285,7 +279,15 @@ a:hover {
   margin-bottom: 10px; /* Adjust this margin as needed for spacing */
 }
 
-.btn-create a {
+/* Styles for the .btn-create button */
+.btn-view {
+  display: flex;
+  justify-content: start;
+  margin-bottom: 10px; /* Adjust this margin as needed for spacing */
+}
+
+.btn-create a,
+.btn-view a {
   background-color: #007bff;
   color: #fff;
   padding: 10px 20px;
@@ -295,7 +297,8 @@ a:hover {
   text-decoration: none; /* Remove underline on the button text */
 }
 
-.btn-create a:hover {
+.btn-create a:hover,
+.btn-view a:hover {
   background-color: #0056b3; /* Change background color on hover */
 }
 
@@ -359,4 +362,60 @@ a:hover {
 
 .error {
   color: #ff4136;
+}
+
+.btn-delete {
+  background-color: #ff4136 !important;
+}
+
+.success {
+  color: green;
+}
+/* Style for the dropdown */
+#statusDropdown {
+  width: 150px; /* Set a fixed width for the dropdown */
+  padding: 8px;
+  height: 36px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Style for dropdown options */
+#statusDropdown option {
+  font-size: 16px;
+}
+
+.delete-order-form {
+  width: fit-content;
+  height: fit-content;
+  margin: 0;
+  padding: 0;
+}
+
+.action-order-admin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.control-order {
+  display: flex;
+  justify-content: space-between;
+}
+
+.info-order {
+  text-align: left;
+}
+
+.border-admin-action-box {
+  box-shadow: inset 0 0 0 5px rgba(0, 0, 0, 0.125);
+  padding: 20px;
+}
+
+.action-product {
+  display: flex;
 }

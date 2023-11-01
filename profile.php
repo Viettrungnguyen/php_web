@@ -52,30 +52,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <div class="navbar">
-        <div class="user-menu">
-            <span id="username"><?php echo $_SESSION['username']; ?></span>
-            <div class="dropdown-content" id="userDropdown">
-                <a href="profile.php">Change Information</a>
-                <a href="logout.php">Logout</a>
-            </div>
-        </div>
+    <?php include 'navbar.php'; ?>
+    <?php include 'sidebar.php'; ?>
+    <div class="content">
+        <h1>Change Information</h1>
+
+        <?php
+        if (isset($success_message)) {
+            echo '<p style="color: green;">' . $success_message . '</p>';
+        } elseif (isset($error_message)) {
+            echo '<p style="color: red;">' . $error_message . '</p>';
+        }
+        ?>
+
+        <form method="post">
+            <label for="new_username">New Username:</label>
+            <input type="text" id="new_username" name="new_username" required>
+            <input type="submit" name="update_profile" value="Update Profile">
+        </form>
     </div>
-    <h1>Change Information</h1>
-
-    <?php
-    if (isset($success_message)) {
-        echo '<p style="color: green;">' . $success_message . '</p>';
-    } elseif (isset($error_message)) {
-        echo '<p style="color: red;">' . $error_message . '</p>';
-    }
-    ?>
-
-    <form method="post">
-        <label for="new_username">New Username:</label>
-        <input type="text" id="new_username" name="new_username" required>
-        <input type="submit" name="update_profile" value="Update Profile">
-    </form>
 </body>
 
 </html>

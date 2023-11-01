@@ -46,6 +46,19 @@
                     echo '<input type="number" id="price" name="price" class="input" required value="' . $product['price'] . '">';
                     echo '<label for="description" class="label">Product Description:</label>';
                     echo '<textarea id="description" name="description" class="input" required>' . $product['description'] . '</textarea>';
+
+                    // Fetch categories from the database
+                    $sql = "SELECT id, name FROM categories";
+                    $result = $conn->query($sql);
+
+                    echo '<label for="category" class="label">Category:</label>';
+                    echo '<select id="category" name="category" class="input" required>';
+                    while ($row = $result->fetch_assoc()) {
+                        $selected = ($row['id'] == $product['category_id']) ? 'selected' : '';
+                        echo '<option value="' . $row['id'] . '" ' . $selected . '>' . $row['name'] . '</option>';
+                    }
+                    echo '</select>';
+
                     echo '<label class="label">Existing Product Image:</label>';
                     echo '<img src="' . $product['image'] . '" class="existing-image" alt="Existing Image">';
                     echo '<label for="image" class="label mt-10px">New Product Image:</label>';
@@ -82,6 +95,8 @@ if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $price = $_POST['price'];
     $description = $_POST['description'];
+    $category = $_POST['category'];
+
     // Check if a new image is uploaded
     if ($_FILES["image"]["name"]) {
         $target_directory = "uploads/products/";
@@ -100,11 +115,11 @@ if (isset($_POST['submit'])) {
             echo "Only JPG, JPEG, PNG, and GIF files are allowed.";
         } elseif (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
             // Update product data in the database, including the new image path
-            $sql = "UPDATE products SET name = ?, price = ?, description = ?, image = ? WHERE id = ?";
+            $sql = "UPDATE products SET name = ?, price = ?, description = ?, image = ?, category_id = ? WHERE id = ?";
             $stmt = $conn->prepare($sql);
 
             if ($stmt) {
-                $stmt->bind_param("sdssi", $name, $price, $description, $target_file, $id);
+                $stmt->bind_param("sdsisi", $name, $price, $description, $target_file, $category, $id);
                 if ($stmt->execute()) {
                     echo "Product updated successfully with a new image.";
                 } else {
@@ -119,11 +134,11 @@ if (isset($_POST['submit'])) {
         }
     } else {
         // No new image provided, update product data without changing the image
-        $sql = "UPDATE products SET name = ?, price = ?, description = ? WHERE id = ?";
+        $sql = "UPDATE products SET name = ?, price = ?, description = ?, category_id = ? WHERE id = ?";
         $stmt = $conn->prepare($sql);
 
         if ($stmt) {
-            $stmt->bind_param("sdsi", $name, $price, $description, $id);
+            $stmt->bind_param("sdsii", $name, $price, $description, $category, $id);
             if ($stmt->execute()) {
                 echo "Product updated successfully.";
             } else {
