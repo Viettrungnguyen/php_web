@@ -74,7 +74,7 @@ if (isset($_SESSION['user_id'])) {
 
                     <?php
                     if ($userRole === 'customer' && $userLoggedIn) {
-                        echo '<a href="profile.php">My Profile</a>';
+                        echo '<a href="profile_user.php">My Profile</a>';
                         echo '<a href="orderlist.php">My Orders</a>';
                         echo '<a href="logout.php">Logout</a>';
                     }

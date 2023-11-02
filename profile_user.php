@@ -43,13 +43,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <head>
     <title>Change Information</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="stylePage.css">
 </head>
 
 <body>
-    <?php include 'navbar.php'; ?>
-    <?php include 'sidebar.php'; ?>
-    <div class="content">
+    <?php include 'navbarHomepage.php'; ?>
+    <main class="container">
         <h1>Change Information</h1>
 
         <?php
@@ -65,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="text" id="new_username" name="new_username" required>
             <input type="submit" name="update_profile" value="Update Profile">
         </form>
-    </div>
+    </main>
 </body>
 
 </html>
