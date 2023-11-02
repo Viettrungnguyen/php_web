@@ -18,6 +18,8 @@ if (isset($_GET['order_id'])) {
     $sql = "SELECT
                 orders.id AS order_id,
                 orders.order_date,
+                orders.phone,
+                orders.address,
                 orders.status,
                 users.username AS customer_name
             FROM orders
@@ -91,6 +93,8 @@ if (isset($_GET['order_id'])) {
                 <h2>Order ID: <?php echo $order['order_id']; ?></h2>
                 <p>Customer Name: <?php echo $order['customer_name']; ?></p>
                 <p>Order Date: <?php echo $order['order_date']; ?></p>
+                <p>Phone: <?php echo $order['phone']; ?></p>
+                <p>Address: <?php echo $order['address']; ?></p>
                 <p>Status: <?php echo $order['status']; ?></p>
             </div>
             <div>
