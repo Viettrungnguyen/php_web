@@ -20,14 +20,17 @@
             margin-top: 10px;
         }
 
-        input[type="text"] {
+        .form-input input[type="text"] {
             width: 100%;
             padding: 8px;
             margin: 6px 0;
             box-sizing: border-box;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #000;
         }
 
-        input[type="submit"] {
+        .form-input input[type="submit"] {
             background-color: #4CAF50;
             color: white;
             border: none;
@@ -37,7 +40,7 @@
             border-radius: 5px;
         }
 
-        input[type="submit"]:hover {
+        .form-input input[type="submit"]:hover {
             background-color: #45a049;
         }
     </style>
@@ -56,16 +59,18 @@
         }
         ?>
 
-        <form method="post">
+        <form method="post" class="form-input">
             <label for="new_username">New Username:</label>
-            <input type="text" id="new_username" name="new_username" required>
+            <input type="text" placeholder="Enter username..." id="new_username" name="new_username" required>
             <label for="new_phone">New Phone:</label>
-            <input type="text" id="new_phone" name="new_phone" required>
+            <input type="text" placeholder="Enter new phone number..." id="new_phone" name="new_phone" required>
             <label for="new_address">New Address:</label>
-            <input type="text" id="new_address" name="new_address" required>
+            <input type="text" placeholder="Enter new address..." id="new_address" name="new_address" required>
             <input type="submit" name="update_profile" value="Update Profile">
         </form>
     </main>
+    <?php include 'footer.php'; ?>
+
 </body>
 
 </html>

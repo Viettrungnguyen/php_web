@@ -10,13 +10,13 @@
 
 <body>
     <?php include 'navbarHomePage.php'; ?>
-    <main>
-        <div class="product-container" id="productContainer">
-            <?php
-            include('get_products.php');
-            ?>
-        </div>
-    </main>
+    <div class="product-container" id="productContainer">
+        <?php
+        include('get_products.php');
+        ?>
+    </div>
+    <?php include 'footer.php'; ?>
+
 </body>
 <script>
     function addToCart(productId, quantity) {

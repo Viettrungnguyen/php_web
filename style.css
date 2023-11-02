@@ -88,11 +88,6 @@ p.switch {
   z-index: 1000;
 }
 
-.logo {
-  text-align: center;
-  margin-left: 60px; /* Adjust margin as needed */
-}
-
 .user-info {
   margin-left: auto;
   padding: 5px 40px;
@@ -437,4 +432,10 @@ a:hover {
 
 .search-order {
   margin: 0 10px 0 0 !important;
+}
+
+a.logo {
+  text-align: center;
+  margin-left: 60px; /* Adjust margin as needed */
+  padding: 0 !important;
 }

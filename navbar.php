@@ -19,9 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
 }
 ?>
 <div class="navbar">
-    <div class="logo">
+    <a class="logo" href="dashboard.php">
         <img src="logo.png" alt="Logo" height="48px">
-    </div>
+    </a>
     <div class="user-info">
         <span id="username"><?php echo $_SESSION['username']; ?></span>
         <div class="dropdown-content" id="userDropdown">

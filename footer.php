@@ -1,6 +1,6 @@
 <style>
     footer {
-        background: linear-gradient(150.18deg, #5203db -1.65%, #039fdb 103.96%);
+        background: black;
         color: #fff;
     }
 
@@ -36,7 +36,7 @@
     }
 
     /* Style the social media icons */
-    .footer-social a {
+    .footer-social i {
         margin-right: 10px;
         text-decoration: none;
         color: #fff;
@@ -44,9 +44,10 @@
 
     /* Style the footer bottom section */
     .footer-bottom {
-        background-color: #222;
+        background-color: black;
         /* Background color */
         text-align: center;
+        border-top: 1px solid #fff;
         padding: 10px 0;
         font-size: 14px;
     }
@@ -65,12 +66,12 @@
             </ul>
         </div>
         <div class="footer-social">
-            <a href="#"><img src="facebook-icon.png" alt="Facebook" height="32px" /></a>
-            <a href="#"><img src="twitter-icon.png" alt="Twitter" height="32px" /></a>
-            <a href="#"><img src="instagram-icon.png" alt="Instagram" height="32px" /></a>
+            <i class="fa-brands fa-facebook-f fa-xl"></i>
+            <i class="fa-brands fa-twitter fa-xl" style="color: #ffffff;"></i>
+            <i class="fa-brands fa-instagram fa-xl" style="color: #ffffff;"></i>
         </div>
     </div>
     <div class="footer-bottom">
-        &copy; 2023 Your Website Name. All rights reserved.
+        &copy; 2023 Web sell clother. All rights reserved.
     </div>
 </footer>

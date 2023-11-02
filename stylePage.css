@@ -31,6 +31,7 @@ main {
 .container {
   max-width: 1200px;
   margin: 120px auto 30px;
+  min-height: 63vh;
 }
 
 .product {
@@ -76,7 +77,7 @@ body {
 }
 
 .logo img {
-  width: 100px;
+  margin-right: -30px;
 }
 
 .navbar-center-item {
@@ -137,7 +138,7 @@ body {
   background-color: #fff;
   border-radius: 5px;
   padding: 5px;
-  margin: 0 20px;
+  margin: 0;
 }
 
 .search-bar input {
@@ -180,6 +181,8 @@ body {
 
 .dropdown-content {
   display: none;
+  right: 8px;
+  top: 22px;
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;

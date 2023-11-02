@@ -79,6 +79,8 @@ $result = $conn->query($sql);
         $conn->close();
         ?>
     </main>
+    <?php include 'footer.php'; ?>
+
 </body>
 
 </html>
