@@ -34,12 +34,16 @@ $conn->close();
     <title>Product Detail</title>
     <link rel="stylesheet" type="text/css" href="stylePage.css">
     <style>
+        main {
+            min-height: 67vh;
+
+        }
+
         .product-detail-container {
             display: flex;
             justify-content: space-between;
             margin: 20px;
             padding: 20px;
-            border: 1px solid #ddd;
             background-color: #fff;
         }
 
@@ -51,6 +55,9 @@ $conn->close();
 
         .product-detail-info {
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .product-detail-title {
@@ -75,6 +82,7 @@ $conn->close();
             border: none;
             padding: 10px 15px;
             cursor: pointer;
+            margin-left: auto;
         }
 
         .product-detail-button:hover {
@@ -89,13 +97,43 @@ $conn->close();
         <div class="product-detail-container">
             <img class="product-detail-image" src="<?php echo $product['image'] ?>" alt="<?php echo $product['name']; ?>">
             <div class="product-detail-info">
-                <h2 class="product-detail-title"><?php echo $product['name']; ?></h2>
-                <p class="product-detail-description"><?php echo $product['description']; ?></p>
-                <p class="product-detail-price">Price: <?php echo number_format($product['price'], 0, ',', ','); ?> đ</p>
-                <button class="product-detail-button" type="button" onclick="addToCart(<?php echo $product['id']; ?>, 1)">Add to Cart</button>
+                <div>
+                    <h2 class="product-detail-title"><?php echo $product['name']; ?></h2>
+                    <p class="product-detail-description"><?php echo $product['description']; ?></p>
+                </div>
+                <div class="product-flex-end">
+                    <p class="product-detail-price">Price: <?php echo number_format($product['price'], 0, ',', ','); ?> đ</p>
+                    <button class="product-detail-button" type="button" onclick="addToCart(<?php echo $product['id']; ?>)">Add to Cart</button>
+                </div>
             </div>
         </div>
     </main>
+    <?php include 'footer.php'; ?>
+
 </body>
+
+<script>
+    function addToCart(productId, quantity) {
+        // Prepare the data to send to the server
+        const data = {
+            product_id: productId,
+        };
+
+        // Send an AJAX request to the server
+        $.ajax({
+            type: "POST",
+            url: "add_to_cart.php", // Replace with the actual URL to handle cart updates
+            data: data,
+            success: function(response) {
+                // Handle the server response, e.g., update the cart icon or show a confirmation message
+                alert("Product added to cart!");
+            },
+            error: function(error) {
+                // Handle any errors, e.g., show an error message
+                console.error("Error adding product to cart: " + error);
+            }
+        });
+    }
+</script>
 
 </html>
