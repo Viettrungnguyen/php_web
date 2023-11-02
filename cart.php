@@ -143,7 +143,7 @@
             // Connect to the database
             $host = "localhost";
             $username = "root";
-            $password = "root";
+            $password = "";
             $database = "web_sell_clother";
 
             $conn = new mysqli($host, $username, $password, $database);

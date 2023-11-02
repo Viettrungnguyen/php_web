@@ -35,7 +35,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] !== 'admin') {
                 // Connect to the database and fetch categories
                 $host = "localhost";
                 $username = "root";
-                $password = "root";
+                $password = "";
                 $database = "web_sell_clother";
 
                 $conn = new mysqli($host, $username, $password, $database);
@@ -70,7 +70,7 @@ if (isset($_SESSION['user_role']) && $_SESSION['user_role'] !== 'admin') {
 <?php
 $host = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $database = "web_sell_clother";
 
 $conn = new mysqli($host, $username, $password, $database);
