@@ -11,7 +11,7 @@ if (isset($_POST['phone']) && isset($_POST['address'])) {
     // Connect to the database
     $host = "localhost";
     $username = "root";
-    $password = "";
+    $password = "root";
     $database = "web_sell_clother";
 
     $conn = new mysqli($host, $username, $password, $database);

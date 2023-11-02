@@ -16,7 +16,7 @@
         <?php
         $host = "localhost";
         $username = "root";
-        $password = "";
+        $password = "root";
         $database = "web_sell_clother";
 
         $conn = new mysqli($host, $username, $password, $database);
@@ -81,7 +81,7 @@
 <?php
 $host = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $database = "web_sell_clother";
 
 $conn = new mysqli($host, $username, $password, $database);
@@ -119,7 +119,7 @@ if (isset($_POST['submit'])) {
             $stmt = $conn->prepare($sql);
 
             if ($stmt) {
-                $stmt->bind_param("sdsisi", $name, $price, $description, $target_file, $category, $id);
+                $stmt->bind_param("sdsssi", $name, $price, $description, $target_file, $category, $id);
                 if ($stmt->execute()) {
                     echo "Product updated successfully with a new image.";
                 } else {

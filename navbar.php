@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
 ?>
 <div class="navbar">
     <div class="logo">
-        <img src="ACB.jpg" alt="Logo" height="48px">
+        <img src="logo.png" alt="Logo" height="48px">
     </div>
     <div class="user-info">
         <span id="username"><?php echo $_SESSION['username']; ?></span>

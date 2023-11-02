@@ -5,7 +5,7 @@ if (isset($_POST['order_id']) && isset($_POST['new_status'])) {
 
     $host = "localhost";
     $username = "root";
-    $password = "";
+    $password = "root";
     $database = "web_sell_clother";
 
     $conn = new mysqli($host, $username, $password, $database);

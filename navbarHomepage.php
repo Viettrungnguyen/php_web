@@ -14,7 +14,7 @@ if (isset($_SESSION['user_id'])) {
     $userRole = 'customer';
 }
 ?>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
     #cartIcon {
         position: relative;
@@ -22,8 +22,8 @@ if (isset($_SESSION['user_id'])) {
 
     #cartItemCount {
         position: absolute;
-        top: -5px;
-        right: 0px;
+        top: -12px;
+        right: -10px;
         background-color: #FF5722;
         color: #fff;
         border-radius: 50%;
@@ -38,16 +38,51 @@ if (isset($_SESSION['user_id'])) {
     <div class="navbar">
         <div class="navbar-left">
             <div class="logo">
-                <a href="homepage.php">
-                    <img src="logo.svg" alt="Logo" height="52px">
-                </a>
-            </div>
-            <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="Search for products..." onkeyup="searchProducts()">
 
             </div>
+            <div class="logo">
+                <a href="homepage.php">
+                    <img src="logo.png" alt="Logo" height="52px">
+                </a>
+            </div>
+            <div class="navbar-right">
+                <div class="user-dropdown">
+                    <div class="user-icon">
+                        <i class="fa-solid fa-user fa-xl" id="userIcon" style="color: #ffffff;"></i>
+                    </div>
+                    <div class="dropdown-content" id="userDropdown">
+                        <?php
+                        if (!$userLoggedIn || $userRole !== 'customer') {
+                            echo '<a href="login.php">Login</a>';
+                        }
+                        ?>
+
+                        <?php
+                        if ($userRole === 'customer' && $userLoggedIn) {
+                            echo '<a href="profile_user.php">My Profile</a>';
+                            echo '<a href="orderlist.php">My Orders</a>';
+                            echo '<a href="logout.php">Logout</a>';
+                        }
+                        ?>
+                    </div>
+                </div>
+
+                <a href="cart.php">
+                    <div class="cart-icon" id="cartIcon">
+                        <i class="fa-solid fa-cart-shopping fa-xl" style="color: #ffffff;"></i>
+                        <div class="cart-contents" id="cartContents">
+                            <?php
+                            if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+                                $totalQuantity = array_sum($_SESSION['cart']);
+                                echo '<span class="cart-quantity" id="cartItemCount">' . $totalQuantity . '</span>';
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
-        <div class="navbar-center">
+        <div class="navbar-center-item">
             <div class="navbar-item">
                 <a href="homepage.php">Home</a>
             </div>
@@ -59,43 +94,12 @@ if (isset($_SESSION['user_id'])) {
             <div class="navbar-item">
                 <a href="about_us.php">About Us</a>
             </div>
-        </div>
-        <div class="navbar-right">
-            <div class="user-dropdown">
-                <div class="user-icon">
-                    <img src="user-icon.png" alt="User" id="userIcon">
-                </div>
-                <div class="dropdown-content" id="userDropdown">
-                    <?php
-                    if (!$userLoggedIn || $userRole !== 'customer') {
-                        echo '<a href="login.php">Login</a>';
-                    }
-                    ?>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search for products..." onkeyup="searchProducts()">
 
-                    <?php
-                    if ($userRole === 'customer' && $userLoggedIn) {
-                        echo '<a href="profile_user.php">My Profile</a>';
-                        echo '<a href="orderlist.php">My Orders</a>';
-                        echo '<a href="logout.php">Logout</a>';
-                    }
-                    ?>
-                </div>
             </div>
-
-            <a href="cart.php">
-                <div class="cart-icon" id="cartIcon">
-                    <img src="cart-icon.png" alt="Cart">
-                    <div class="cart-contents" id="cartContents">
-                        <?php
-                        if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
-                            $totalQuantity = array_sum($_SESSION['cart']);
-                            echo '<span class="cart-quantity" id="cartItemCount">' . $totalQuantity . '</span>';
-                        }
-                        ?>
-                    </div>
-                </div>
-            </a>
         </div>
+
     </div>
 </header>
 

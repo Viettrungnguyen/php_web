@@ -54,7 +54,7 @@
 <footer>
     <div class="footer-content">
         <div class="footer-logo">
-            <img src="logo.svg" alt="Logo" />
+            <img src="logo.png" alt="Logo" />
         </div>
         <div class="footer-links">
             <ul>

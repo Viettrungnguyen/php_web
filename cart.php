@@ -136,14 +136,14 @@
 
 <body>
     <?php include 'navbarHomepage.php'; ?>
-    <main class="container" >
+    <main class="container">
         <h1>Cart Detail</h1>
         <?php
         if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
             // Connect to the database
             $host = "localhost";
             $username = "root";
-            $password = "";
+            $password = "root";
             $database = "web_sell_clother";
 
             $conn = new mysqli($host, $username, $password, $database);
