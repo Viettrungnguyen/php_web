@@ -23,12 +23,12 @@
             <textarea id="description" name="description" class="input" required></textarea>
 
             <label for="category" class="label">Category:</label>
-            <select id="category" name="category" class="input" required>
+            <select id="category" name="category" class="input w-100" required>
                 <?php
                 // Connect to the database and fetch categories
                 $host = "localhost";
                 $username = "root";
-                $password = "";
+                $password = "root";
                 $database = "web_sell_clother";
 
                 $conn = new mysqli($host, $username, $password, $database);
@@ -63,7 +63,7 @@
 <?php
 $host = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $database = "web_sell_clother";
 
 $conn = new mysqli($host, $username, $password, $database);

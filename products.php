@@ -28,7 +28,7 @@
         }
 
         .modal-buttons {
-            text-align: right;
+            text-align: center;
         }
 
         /* Search Bar Styles */
@@ -73,7 +73,7 @@
             <?php
             $host = "localhost";
             $username = "root";
-            $password = "";
+            $password = "root";
             $database = "web_sell_clother";
 
             $conn = new mysqli($host, $username, $password, $database);
@@ -161,8 +161,8 @@
             <h3>Confirm Deletion</h3>
             <p>Are you sure you want to delete this product?</p>
             <div class="modal-buttons">
-                <button id="confirmDeleteButton">Confirm</button>
-                <button onclick="closeConfirmationModal()">Cancel</button>
+                <button class="btn" id="confirmDeleteButton">Confirm</button>
+                <button class="btn btn-delete" onclick="closeConfirmationModal()">Cancel</button>
             </div>
         </div>
     </div>
@@ -174,7 +174,7 @@
 <?php
 $host = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $database = "web_sell_clother";
 
 $conn = new mysqli($host, $username, $password, $database);

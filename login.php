@@ -19,7 +19,7 @@ if (isset($_SESSION['user_id'])) {
 // Database configuration
 $host = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $database = "web_sell_clother";
 
 // Create a database connection
@@ -91,7 +91,7 @@ $mysqli->close();
         <input type="submit" value="Login">
     </form>
 
-    <p>Don't have an account? <a href="register.php">Register Account</a></p>
+    <p>Don't have an account? <a class="link inline-link" href="register.php">Register</a></p>
 
 </body>
 

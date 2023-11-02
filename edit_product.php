@@ -16,7 +16,7 @@
         <?php
         $host = "localhost";
         $username = "root";
-        $password = "";
+        $password = "root";
         $database = "web_sell_clother";
 
         $conn = new mysqli($host, $username, $password, $database);
@@ -52,7 +52,7 @@
                     $result = $conn->query($sql);
 
                     echo '<label for="category" class="label">Category:</label>';
-                    echo '<select id="category" name="category" class="input" required>';
+                    echo '<select id="category" name="category" class="input w-100" required>';
                     while ($row = $result->fetch_assoc()) {
                         $selected = ($row['id'] == $product['category_id']) ? 'selected' : '';
                         echo '<option value="' . $row['id'] . '" ' . $selected . '>' . $row['name'] . '</option>';
@@ -81,7 +81,7 @@
 <?php
 $host = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $database = "web_sell_clother";
 
 $conn = new mysqli($host, $username, $password, $database);

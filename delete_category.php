@@ -3,7 +3,7 @@ $category_id = $_GET['id'];
 
 $host = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $database = "web_sell_clother";
 
 if (isset($_GET['id'])) {

@@ -267,6 +267,15 @@ a:hover {
   text-decoration: none;
   margin-right: 10px;
 }
+.inline-link {
+  display: inline;
+  padding: 0;
+}
+
+.inline-link:hover {
+text-decoration: underline;
+background: none;
+}
 
 .btn-submit {
   margin-top: 10px;
@@ -418,4 +427,23 @@ a:hover {
 
 .action-product {
   display: flex;
+}
+
+
+.w-100 {
+  width: 100%;
+}
+
+.form-order {
+  display: flex;
+  background: none;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  margin: 10px 0;
+  width: 400px;
+}
+
+.search-order {
+  margin: 0 10px 0 0 !important;
 }

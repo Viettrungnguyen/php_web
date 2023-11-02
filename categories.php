@@ -62,7 +62,7 @@
                 <?php
                 $host = "localhost";
                 $username = "root";
-                $password = "";
+                $password = "root";
                 $database = "web_sell_clother";
 
                 $conn = new mysqli($host, $username, $password, $database);
@@ -121,8 +121,8 @@
         <div class="modal-content">
             <h3>Confirm Deletion</h3>
             <p>Are you sure you want to delete this category?</p>
-            <button id="confirmDeleteButton">Confirm</button>
-            <button id="cancelDeleteButton">Cancel</button>
+            <button class="btn" id="confirmDeleteButton">Confirm</button>
+            <button class="btn btn-delete" id="cancelDeleteButton">Cancel</button>
         </div>
     </div>
 

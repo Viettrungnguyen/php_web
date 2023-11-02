@@ -19,7 +19,7 @@ if (isset($_SESSION['user_id'])) {
 // Database configuration
 $host = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $database = "web_sell_clother";
 
 $conn = new mysqli($host, $username, $password, $database);
@@ -33,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['register'])) {
         $input_username = $_POST['username'];
         $input_password = $_POST['password'];
+        $user_role = $_POST['role']; // Get the selected user role
 
         // Check if the username is already in use
         $check_query = "SELECT id FROM users WHERE username = ?";
@@ -47,17 +48,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // If the username is available, register the user
             $hashed_password = password_hash($input_password, PASSWORD_BCRYPT); // Hash the password
 
-            $insert_query = "INSERT INTO users (username, password) VALUES (?, ?)";
+            $insert_query = "INSERT INTO users (username, password, role) VALUES (?, ?, ?)";
             $stmt = $conn->prepare($insert_query);
-            $stmt->bind_param("ss", $input_username, $hashed_password);
+            $stmt->bind_param("sss", $input_username, $hashed_password, $user_role); // Store the selected role
             $stmt->execute();
 
             $user_id = $stmt->insert_id;
 
             // Set the user's session
             $_SESSION['user_id'] = $user_id;
+            $_SESSION['user_role'] = $user_role; // Store the user's role in the session
 
-            header("Location: dashboard.php");
+            header("Location: login.php");
             exit();
         }
 
@@ -90,10 +92,19 @@ $conn->close();
         <input type="text" id="username" name="username" required><br>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required><br>
+
+        <!-- Dropdown to select user role -->
+        <label for="role">Role:</label>
+        <select id="role" name="role" class="input w-100">
+            <option value="admin">Admin</option>
+            <option value="staff">Staff</option>
+            <option value="customer">Customer</option>
+        </select>
+
         <input type="submit" name="register" value="Register">
     </form>
 
-    <p>Already have an account? <a href="login.php">Login</a></p>
+    <p>Already have an account? <a class="link inline-link" href="login.php">Login</a></p>
 </body>
 
 </html>
