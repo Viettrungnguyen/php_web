@@ -72,12 +72,12 @@ $conn->close();
 
         .product-detail-price {
             font-size: 20px;
-            color: #4CAF50;
+            color: black;
             margin-bottom: 10px;
         }
 
         .product-detail-button {
-            background-color: #4CAF50;
+            background-color: black;
             color: white;
             border: none;
             padding: 10px 15px;
@@ -86,7 +86,7 @@ $conn->close();
         }
 
         .product-detail-button:hover {
-            background-color: #45a049;
+            background-color: #3a3a3a;
         }
     </style>
 </head>
