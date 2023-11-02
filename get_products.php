@@ -13,14 +13,20 @@ if ($conn->connect_error) {
 if (isset($_GET['category'])) {
     $selectedCategory = $_GET['category'];
     $sql = "SELECT * FROM products WHERE category_id = '" . $selectedCategory . "'";
+    $getNameCategorySql = "SELECT name FROM categories WHERE id = '" . $selectedCategory . "'";
+    $getName = $conn->query($getNameCategorySql)->fetch_assoc();
 } else {
     $sql = "SELECT * FROM products";
 }
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
+    if (isset($_GET['category'])) {
+        echo '<h1 style="width: 100%;">All Product of category: ' . $getName['name'] . '</h1>';
+    }
     while ($row = $result->fetch_assoc()) {
-        echo '<div class="product">
+        echo '
+        <div class="product">
             <a href="product_detail.php?product_id=' . $row['id'] . '">
                 <img class="product-image" src="' . $row['image'] . '" alt="' . $row['name'] . '">
             </a>

@@ -11,7 +11,7 @@
 <body>
     <?php include 'navbarHomepage.php'; ?>
 
-    <main>
+    <main class="container">
         <h1>About Us</h1>
         <section>
             <h2>Our Story</h2>

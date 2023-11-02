@@ -136,7 +136,7 @@
 
 <body>
     <?php include 'navbarHomepage.php'; ?>
-    <main>
+    <main class="container" >
         <h1>Cart Detail</h1>
         <?php
         if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
@@ -217,7 +217,10 @@
             echo "Your cart is empty.";
         }
         ?>
-        <a href="homepage.php" class="button">Back to Homepage</a>
+        <div class="box-button">
+            <a href="homepage.php" class="button button-back">Back to Homepage</a>
+            <a href="checkout.php" class="button button-right">Proceed to Checkout</a>
+        </div>
     </main>
     <div id="deleteModal" class="modal">
         <div class="modal-content">

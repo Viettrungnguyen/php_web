@@ -11,10 +11,6 @@
 <body>
     <?php include 'navbarHomePage.php'; ?>
     <main>
-        <?php if (isset($_GET['category'])) {
-            echo '<h1>All Product of category: </h1>';
-        }
-        ?>
         <div class="product-container" id="productContainer">
             <?php
             include('get_products.php');
