@@ -73,7 +73,7 @@
             <?php
             $host = "localhost";
             $username = "root";
-            $password = "root";
+            $password = "";
             $database = "web_sell_clother";
 
             $conn = new mysqli($host, $username, $password, $database);
@@ -139,7 +139,7 @@
                     echo "<td class='table-data'><img src='" . $row['image'] . "' alt='" . $row['name'] . "' class='product-image'></td>";
                     echo "<td class='table-data'>" . $row['name'] . "</td>";
                     echo "<td class='table-data'>" . $row['category_name'] . "</td>";
-                    echo "<td class='table-data'>" . number_format($row['price'], 0, ',', '.') . ' đ' . "</td>";
+                    echo "<td class='table-data'>" . number_format($row['price'], 0, ',', ',') . ' đ' . "</td>";
                     echo "<td class='table-data'>" . (strlen($row['description']) > 50 ? substr($row['description'], 0, 50) . '...' : $row['description']) . "</td>";
                     echo "<td class='table-data table-action'>
                             <a href='edit_product.php?product_id=" . $row['id'] . "' class='btn-edit edit'>Edit</a>
@@ -174,7 +174,7 @@
 <?php
 $host = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $database = "web_sell_clother";
 
 $conn = new mysqli($host, $username, $password, $database);

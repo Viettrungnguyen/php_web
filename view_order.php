@@ -1,7 +1,7 @@
 <?php
 $host = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $database = "web_sell_clother";
 
 $conn = new mysqli($host, $username, $password, $database);
@@ -144,8 +144,8 @@ if (isset($_GET['order_id'])) {
                     echo '<tr>
                         <td class="table-data">' . $item['product_name'] . '</td>
                         <td class="table-data">' . $item['quantity'] . '</td>
-                        <td class="table-data">' . number_format($item['price'], 0, ',', '.') . ' đ' . '</td>
-                        <td class="table-data">' . number_format($item['total'], 0, ',', '.') . ' đ' . '</td>
+                        <td class="table-data">' . number_format($item['price'], 0, ',', ',') . ' đ' . '</td>
+                        <td class="table-data">' . number_format($item['total'], 0, ',', ',') . ' đ' . '</td>
                       </tr>';
                 }
             }

@@ -1,0 +1,288 @@
+header {
+  background: linear-gradient(150.18deg, #0333db -1.65%, #039fdb 103.96%);
+  color: #fff;
+  padding: 10px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  margin-top: 60px;
+  padding: 20px;
+}
+
+.product-container {
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5%;
+  margin: 0 auto;
+}
+
+.product {
+  width: 25%;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+}
+
+.product-price-add {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+button {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.navbar-left,
+.navbar-center {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 100px;
+}
+
+.navbar-center {
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+.navbar-item {
+  position: relative;
+  margin: 0 15px;
+}
+
+.navbar-item a {
+  color: white;
+  text-decoration: none;
+  padding: 12px 16px;
+  display: block;
+}
+
+.dropdown-cate {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  opacity: 0; /* Start with 0 opacity */
+  transition: opacity 0.3s; /* Add a fade-in transition */
+}
+
+.dropdown-cate a {
+  padding: 12px 16px;
+  color: #000;
+  text-decoration: none;
+  display: block;
+}
+
+.navbar-item:hover .dropdown-cate {
+  display: block;
+  opacity: 1;
+}
+
+.navbar-item:hover .dropdown-cate {
+  display: block;
+}
+
+.dropdown-cate a:hover {
+  background-color: #f1f1f1;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 0 20px;
+}
+
+.search-bar input {
+  border: none;
+  padding: 10px;
+  width: 300px; /* Adjust the width as needed */
+}
+
+.search-button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.user-icon img,
+.cart-icon img {
+  height: 40px;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+/* Your existing styles */
+.user-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.cart-icon {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.cart-count {
+  position: absolute;
+  top: -4px;
+  right: 0px;
+  background-color: white;
+  color: black;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 14px;
+}
+
+.cart-items {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #ccc;
+  width: 200px;
+  padding: 10px;
+  display: none;
+  color: #000;
+}
+
+.cart-items ul {
+  list-style: none;
+  padding: 0;
+}
+
+.cart-items li {
+  margin-bottom: 10px;
+}
+
+/* Show the cart items when hovering over the cart icon */
+.cart-icon:hover .cart-items {
+  display: block;
+}
+
+.product-image {
+  width: 100%;
+  height: 150px;
+}
+
+.product-title {
+  font-size: 16px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 5px 0;
+  text-align: left;
+  text-decoration: none;
+  color: #000;
+}
+
+.product-description {
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 5px 0;
+  text-align: left;
+}
+
+.product-price {
+  font-size: 14px;
+  color: #555;
+  margin: 5px 0;
+}
+
+/* Add this CSS to your stylePage.css or a separate CSS file */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: 90%;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #2980b9;
+}
+
+.btn-delete {
+  background-color: #ff4136 !important;
+}

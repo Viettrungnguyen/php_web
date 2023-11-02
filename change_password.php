@@ -1,16 +1,14 @@
 <?php
 session_start();
 
-// Check if the user is logged in, redirect to the login page if not
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
 
-// Database connection (replace with your database credentials)
 $host = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $database = "web_sell_clother";
 
 $conn = new mysqli($host, $username, $password, $database);

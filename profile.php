@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 // Database connection (you should replace these values with your actual database credentials)
 $host = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $database = "web_sell_clother";
 
 $conn = new mysqli($host, $username, $password, $database);

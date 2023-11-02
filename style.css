@@ -103,7 +103,7 @@ p.switch {
 
 .user-info {
   margin-left: auto;
-  padding: 5px 20px;
+  padding: 5px 40px;
 }
 
 #username {
@@ -273,8 +273,8 @@ a:hover {
 }
 
 .inline-link:hover {
-text-decoration: underline;
-background: none;
+  text-decoration: underline;
+  background: none;
 }
 
 .btn-submit {
@@ -428,7 +428,6 @@ background: none;
 .action-product {
   display: flex;
 }
-
 
 .w-100 {
   width: 100%;

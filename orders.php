@@ -1,7 +1,7 @@
 <?php
 $host = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $database = "web_sell_clother";
 
 $conn = new mysqli($host, $username, $password, $database);
@@ -90,7 +90,7 @@ $result = $conn->query($sql);
                 echo '<tr>
                     <td class="table-data">' . $row['order_id'] . '</td>
                     <td class="table-data">' . $row['customer_name'] . '</td>
-                    <td class="table-data">' . number_format($row['total_amount'], 0, ',', '.') . ' đ' . '</td>
+                    <td class="table-data">' . number_format($row['total_amount'], 0, ',', ',') . ' đ' . '</td>
                     <td class="table-data">' . $row['order_date'] . '</td>
                     <td class="table-data">' . $row['status'] . '</td>
                     <td class="table-data">

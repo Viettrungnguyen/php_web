@@ -2,7 +2,7 @@
 // Database configuration
 $host = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $database = "web_sell_clother";
 
 // Create a database connection

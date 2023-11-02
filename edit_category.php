@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["updateCategory"])) {
 
     $host = "localhost";
     $username = "root";
-    $password = "root";
+    $password = "";
     $database = "web_sell_clother";
 
     $conn = new mysqli($host, $username, $password, $database);
