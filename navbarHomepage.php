@@ -13,6 +13,32 @@ if (isset($_SESSION['user_id'])) {
     $userLoggedIn = false;
     $userRole = 'customer';
 }
+
+// Connect to the database
+$host = "localhost";
+$username = "root";
+$password = "";
+$database = "web_sell_clother";
+
+$conn = new mysqli($host, $username, $password, $database);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Retrieve the old user data from the database
+$userId = $_SESSION['user_id'];
+$sql = "SELECT username, phone, address FROM users WHERE id = $userId";
+$result = $conn->query($sql);
+
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $oldUsername = $row['username'];
+    $oldPhone = $row['phone'];
+    $oldAddress = $row['address'];
+}
+
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>

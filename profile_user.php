@@ -61,11 +61,11 @@
 
         <form method="post" class="form-input">
             <label for="new_username">New Username:</label>
-            <input type="text" placeholder="Enter username..." id="new_username" name="new_username" required>
+            <input type="text" placeholder="Enter username..." id="new_username" name="new_username" required value="<?php echo $oldUsername; ?>">
             <label for="new_phone">New Phone:</label>
-            <input type="text" placeholder="Enter new phone number..." id="new_phone" name="new_phone" required>
+            <input type="text" placeholder="Enter new phone number..." id="new_phone" name="new_phone" required value="<?php echo $oldPhone; ?>">
             <label for="new_address">New Address:</label>
-            <input type="text" placeholder="Enter new address..." id="new_address" name="new_address" required>
+            <input type="text" placeholder="Enter new address..." id="new_address" name="new_address" required value="<?php echo $oldAddress; ?>">
             <input type="submit" name="update_profile" value="Update Profile">
         </form>
     </main>
@@ -74,3 +74,41 @@
 </body>
 
 </html>
+<?php
+// Connect to the database
+$host = "localhost";
+$username = "root";
+$password = "";
+$database = "web_sell_clother";
+
+$conn = new mysqli($host, $username, $password, $database);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['update_profile'])) {
+        $newUsername = $_POST['new_username'];
+        $newPhone = $_POST['new_phone'];
+        $newAddress = $_POST['new_address'];
+        $userId = $_SESSION['user_id'];
+
+        $sql = "UPDATE users SET username = ?, phone = ?, address = ? WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("sssi", $newUsername, $newPhone, $newAddress, $userId);
+
+        if ($stmt->execute()) {
+            $_SESSION['username'] = $newUsername;
+            $success_message = "Your profile has been updated!";
+        } else {
+            $error_message = "Failed to update profile.";
+        }
+
+        $stmt->close();
+    }
+}
+
+$conn->close();
+
+?>
